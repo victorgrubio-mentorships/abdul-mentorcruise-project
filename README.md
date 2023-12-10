@@ -1,86 +1,54 @@
-## Compose sample application
+Project: Fanzone App for a Football Club
 
-### Use with Docker Development Environments
+**Problem Statement:**
 
-You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
+As a football club, you want to create a fan-engagement platform that allows members to register, manage their membership status, purchase accessories, and participate in club events. You also need to manage admin access, track member attendance, and send reminders for membership renewal.
 
-[Open in Docker Dev Environments <img src="../open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/docker/awesome-compose/tree/master/nginx-flask-mysql)
+**Solution:**
 
-### Python/Flask with Nginx proxy and MySQL database
+This project will implement a backend API for a fanzone app that addresses the following functionalities:
 
-Project structure:
-```
-.
-├── compose.yaml
-├── flask
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── server.py
-└── nginx
-    └── nginx.conf
+1. **Member Management:**
+    - Register new members and store their information (name, email, phone number, membership type, membership expiry date)
+    - Update member information (e.g., change contact details)
+    - Check membership status (paid or unpaid) and membership expiry date
 
-```
+2. **Accessories Store:**
+    - List available accessories for purchase
+    - Process orders for purchased accessories
+    - Manage inventory of accessories
 
-[_compose.yaml_](compose.yaml)
-```
-services:
-  backend:
-    build:
-      context: backend
-      target: builder
-    ...
-  db:
-    # We use a mariadb image which supports both amd64 & arm64 architecture
-    image: mariadb:10-focal
-    # If you really want to use MySQL, uncomment the following line
-    #image: mysql:8
-    ...
-  proxy:
-    build: proxy
-    ...
-```
-The compose file defines an application with three services `proxy`, `backend` and `db`.
-When deploying the application, docker compose maps port 80 of the proxy service container to port 80 of the host as specified in the file.
-Make sure port 80 on the host is not already being in use.
+3. **Event Management:**
+    - Track member attendance at club events
+    - Send reminders for upcoming events
+    - Identify members who haven't attended enough events for eligibility to attend important matches
 
-> ℹ️ **_INFO_**  
-> For compatibility purpose between `AMD64` and `ARM64` architecture, we use a MariaDB as database instead of MySQL.  
-> You still can use the MySQL image by uncommenting the following line in the Compose file   
-> `#image: mysql:8`
+4. **Admin Management:**
+    - Grant access to admins to manage members, accessories, events, and club finances
+    - Track number of members and membership revenue
 
-## Deploy with docker compose
+**Technology Stack:**
 
-```
-$ docker compose up -d
-Creating network "nginx-flask-mysql_default" with the default driver
-Pulling db (mysql:8.0.19)...
-5.7: Pulling from library/mysql
-...
-...
-WARNING: Image for service proxy was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
-Creating nginx-flask-mysql_db_1 ... done
-Creating nginx-flask-mysql_backend_1 ... done
-Creating nginx-flask-mysql_proxy_1   ... done
-```
+1. **Backend Framework:** Flask (Python)
+2. **Database:** PostgreSQL
+3. **CI/CD:** GitHub Actions
+4. **Domain Management:** AWS Route 53
+5. **Content Delivery Network (CDN):** Cloudflare
 
-## Expected result
+**Project Goals:**
 
-Listing containers should show three containers running and the port mapping as below:
-```
-$ docker compose ps
-NAME                          COMMAND                  SERVICE             STATUS              PORTS
-nginx-flask-mysql-backend-1   "flask run"              backend             running             0.0.0.0:8000->8000/tcp
-nginx-flask-mysql-db-1        "docker-entrypoint.s…"   db                  running (healthy)   3306/tcp, 33060/tcp
-nginx-flask-mysql-proxy-1     "nginx -g 'daemon of…"   proxy               running             0.0.0.0:80->80/tcp
-```
+1. **Create a fully functional backend API for the fanzone app.**
+2. **Implement DevOps practices to automate the deployment, testing, and scaling of the backend application.**
+3. **Secure the backend API using appropriate authentication and authorization mechanisms.**
+4. **Build a production-ready application with a domain name and CDN integration.**
 
-After the application starts, navigate to `http://localhost:80` in your web browser or run:
-```
-$ curl localhost:80
-<div>Blog post #1</div><div>Blog post #2</div><div>Blog post #3</div><div>Blog post #4</div>
-```
+**Project Timeline:**
 
-Stop and remove the containers
-```
-$ docker compose down
-```
+1. **Week 1-2:** Project planning, requirements gathering, and infrastructure setup
+2. **Week 3-4:** API development for member management, accessories store, and event management
+3. **Week 5-6:** Integration of admin management and CI/CD pipeline
+4. **Week 7-8:** Testing, deployment, and documentation
+
+**Expected Outcome:**
+
+A fully functional fanzone app backend that provides a robust and secure platform for managing members, accessories, events, and admin access. The project will demonstrate the mentee's ability to apply DevOps principles, secure backend infrastructure, and build a production-ready application.
