@@ -32,8 +32,9 @@ This project will implement a backend API for a fanzone app that addresses the f
 1. **Backend Framework:** Flask (Python)
 2. **Database:** PostgreSQL
 3. **CI/CD:** GitHub Actions
-4. **Domain Management:** AWS Route 53
-5. **Content Delivery Network (CDN):** Cloudflare
+4. **Deployment:** Render
+5. **Domain Management:** Render DNS Setup
+6. **Content Delivery Network (CDN):** Cloudflare
 
 **Project Goals:**
 
