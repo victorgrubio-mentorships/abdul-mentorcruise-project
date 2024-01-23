@@ -1,6 +1,5 @@
 from flask import request, jsonify
 import uuid
-
 from src.db import db
 from src.accounts.models import Account
 
