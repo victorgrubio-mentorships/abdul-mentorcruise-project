@@ -8,7 +8,7 @@ from src.accounts.controllers import (
     delete_account_controller,
 )
 
-accounts_bp = Blueprint("accounts", __name__, url_prefix="accounts")
+accounts_bp = Blueprint("accounts", __name__, url_prefix="/accounts")
 
 
 @accounts_bp.route("/", methods=["GET", "POST"])
