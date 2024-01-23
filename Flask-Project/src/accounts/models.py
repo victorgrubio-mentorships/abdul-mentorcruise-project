@@ -3,7 +3,7 @@ from datetime import datetime
 from flask_validator import ValidateEmail, ValidateString, ValidateCountry
 from sqlalchemy.orm import validates
 
-from src.__init_.py import db # from __init__.py
+from .. import db # from __init__.py
 
 # ----------------------------------------------- #
 
@@ -42,4 +42,4 @@ class Account(db.Model):
         return { c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs }
 
     def __repr__(self):
-        return "<%r>" % self.emails
+        return "<%r>" % self.email

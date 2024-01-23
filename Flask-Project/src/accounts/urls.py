@@ -1,6 +1,6 @@
 from flask import request
 
-from src.app.py import app
+from ..app import app
 from .controllers import list_all_accounts_controller, create_account_controller, retrieve_account_controller, update_account_controller, delete_account_controller
 
 @app.route("/accounts", methods=['GET', 'POST'])
