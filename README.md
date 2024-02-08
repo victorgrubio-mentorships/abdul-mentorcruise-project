@@ -53,3 +53,17 @@ This project will implement a backend API for a fanzone app that addresses the f
 **Expected Outcome:**
 
 A fully functional fanzone app backend that provides a robust and secure platform for managing members, accessories, events, and admin access. The project will demonstrate the mentee's ability to apply DevOps principles, secure backend infrastructure, and build a production-ready application.
+## Development
+
+### Env setup
+
+For new dependencies:
+
+1. Create a venv using `venv` Python module: `python3 -m venv .venv`
+2. Install dependencies: `pip install flask`
+3. Save to requirements.txt: `pip freeze > requirements.txt`
+   
+For existing requirements:
+
+1. Create a venv using `venv` Python module: `python3 -m venv .venv`
+2. Install dependencies: `pip install -r requirements.txt`

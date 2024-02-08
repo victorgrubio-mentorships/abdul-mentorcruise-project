@@ -9,11 +9,8 @@ dbus-python==1.2.18
 distlib==0.3.4
 distro==1.7.0
 dnspython==2.4.2
-docker==5.0.3
-docker-compose==1.29.2
 dockerpty==0.4.1
 docopt==0.6.2
-email-validator==1.1.2
 filelock==3.6.0
 Flask==3.0.0
 Flask-Migrate==4.0.5
